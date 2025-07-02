@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PricePal</title>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="stack-area">
+      <div class="left">
+        <div class="title">PricePal</div>
+        <div class="sub-title">
+            <strong>PricePal</strong> quickly scans top online stores to find you the lowest price—saving you time and money in one click.
+          <br/>
+          <button>Search</button>
+        </div>
+      </div>
+      <div class="right">
+        <div class="card">
+          <div class="sub">Instant Search</div>
+          <div class="content">Find lowest prices in a flash</div>
+        </div>
+        <div class="card">
+          <div class="sub">Smart Filters</div>
+          <div class="content">Drill down by price, rating or store</div>
+        </div>
+        <div class="card">
+          <div class="sub">Price Alerts</div>
+          <div class="content">Be the first to know when prices drop</div>
+        </div>
+        <div class="card">
+          <div class="sub">Support</div>
+          <div class="content">Now its 24/7 support</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let cards = document.querySelectorAll(".card");
+
+      let stackArea = document.querySelector(".stack-area");
+
+      function rotateCards() {
+        let angle = 0;
+        cards.forEach((card, index) => {
+          if (card.classList.contains("away")) {
+            card.style.transform = `translateY(-120vh) rotate(-48deg)`;
+          } else {
+            card.style.transform = ` rotate(${angle}deg)`;
+            angle = angle - 10;
+            card.style.zIndex = cards.length - index;
+          }
+        });
+      }
+
+      rotateCards();
+
+      window.addEventListener("scroll", () => {
+        let distance = window.innerHeight * 0.5;
+
+        let topVal = stackArea.getBoundingClientRect().top;
+
+        let index = -1 * (topVal / distance + 1);
+
+        index = Math.floor(index);
+
+        for (i = 0; i < cards.length; i++) {
+          if (i <= index) {
+            cards[i].classList.add("away");
+          } else {
+            cards[i].classList.remove("away");
+          }
+        }
+        rotateCards();
+      });
+    </script>
+  </body>
+</html>
