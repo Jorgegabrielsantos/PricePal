@@ -1,0 +1,19 @@
+* {
+    margin: auto;
+    padding: auto;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+#title {
+    font-family: poppins;
+    font-size: 20px;
+    text-align: center;
+    margin: 100px 50px 30px 50px;
+}
+
+#search {
+    
+}
